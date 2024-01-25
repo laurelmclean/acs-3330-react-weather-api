@@ -1,6 +1,9 @@
 import "./WeatherForm.css";
+import { useState } from "react";
 
 function WeatherForm() {
+  const [zipCode, setZipCode] = useState("");
+  const [units, setUnits] = useState("imperial");
   return (
     <div className="container">
       <h1 id="temp">{/* Temp */}</h1>
@@ -14,51 +17,12 @@ function WeatherForm() {
           placeholder="Zip code"
           title="Please Enter a valid Zip Code"
           pattern="^\d{5}(?:[-\s]\d{4})?$"
-          value={""}
-          onChange={""}
-        />
-        <br />
-        <label htmlFor="city">OR enter location:</label>
-        <input
-          id="city"
-          type="text"
-          placeholder="City"
-          value={""}
-          onChange={""}
-        />
-        <input
-          id="state"
-          type="text"
-          placeholder="State"
-          value={""}
-          onChange={""}
-        />
-        <input
-          id="country"
-          type="text"
-          placeholder="Country"
-          value={""}
-          onChange={""}
-        />
-        <br />
-        <label htmlFor="latitude">OR enter geolocation:</label>
-        <input
-          id="latitude"
-          type="text"
-          placeholder="Latitude"
-          value={""}
-          onChange={""}
-        />
-        <input
-          id="longitude"
-          type="text"
-          placeholder="Longitude"
-          value={""}
-          onChange={""}
+          value={zipCode}
+          onChange={(e) => setZipCode(e.target.value)}
         />
         <br />
         <label htmlFor="unitSelect">Select units:</label>
-        <select id="unitSelect" value={""} onChange={""}>
+              <select id="unitSelect" value={units} onChange={(e) => setUnits(e.target.value)}>
           <option value="metric">Metric (°C, m/s)</option>
           <option value="imperial">Imperial (°F, mph)</option>
         </select>
