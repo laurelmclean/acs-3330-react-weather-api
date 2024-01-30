@@ -1,6 +1,6 @@
 import "./WeatherData.css";
 
-function WeatherData({data, error, units}) {
+function WeatherData({data, units}) {
 
     function processWeatherData(data) {
         const { main, weather } = data;
@@ -10,10 +10,7 @@ function WeatherData({data, error, units}) {
         return { temp, pressure, humidity, temp_min, temp_max, description, icon };
     }
 
-    if (!data) {
-        return <p>Please submit a valid ZIP code to see weather information.</p>;
-    }
-
+    // If there isn't a success, display error message
     if (data.cod !== 200) {
         return <p>Error: {data.message}</p>
     }
@@ -28,7 +25,7 @@ function WeatherData({data, error, units}) {
             <p>Min Temperature: {processedData.temp_min}{units === "imperial" ? '°F' : '°C'}</p>
             <p>Max Temperature: {processedData.temp_max}{units === "imperial" ? '°F' : '°C'}</p>
             <p>Description: {processedData.description}</p>
-            <img src={`http://openweathermap.org/img/w/${processedData.icon}.png`} alt="Weather Icon" />
+            <img src={`http://openweathermap.org/img/w/${processedData.icon}.png`} alt="Weather Icon" width="100"/>
         </>
     );
 }
