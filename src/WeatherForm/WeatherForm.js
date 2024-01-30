@@ -1,4 +1,5 @@
 import "./WeatherForm.css";
+import WeatherData from "../WeatherData/WeatherData";
 import { useState } from "react";
 
 function WeatherForm() {
@@ -45,8 +46,8 @@ function WeatherForm() {
         <br />
         <label htmlFor="unitSelect">Select units:</label>
               <select id="unitSelect" value={units} onChange={(e) => setUnits(e.target.value)}>
-          <option value="metric">Metric (°C, m/s)</option>
-          <option value="imperial">Imperial (°F, mph)</option>
+          <option value="metric">Metric (°C)</option>
+          <option value="imperial">Imperial (°F)</option>
         </select>
         <br />
               <div>
@@ -75,14 +76,7 @@ function WeatherForm() {
               <button type="submit">Search</button>
 
       </form>
-          {weatherData && (
-              <div>
-                  <h2>Weather Data</h2>
-                  <p>{JSON.stringify(weatherData)}</p>
-              </div>
-          )}
-
-          {error && <p>Error: {error}</p>}
+          <WeatherData data={weatherData} error={error} units={units}/>
     </div>
   );
 }
