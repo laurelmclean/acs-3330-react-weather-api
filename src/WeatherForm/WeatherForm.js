@@ -33,6 +33,7 @@ function WeatherForm() {
   };
   return (
     <div className="container">
+        <h1>Laurel's Weather App</h1>
       <form id="form" onSubmit={handleSubmit}>
         <label>Enter Zip Code:</label>
         <input

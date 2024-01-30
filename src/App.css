@@ -1,0 +1,14 @@
+body,
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #fce8e6;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 24px;
+  font-weight: lighter;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
