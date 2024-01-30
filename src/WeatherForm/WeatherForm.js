@@ -4,13 +4,35 @@ import { useState } from "react";
 function WeatherForm() {
   const [zipCode, setZipCode] = useState("");
   const [units, setUnits] = useState("imperial");
+    const [weatherData, setWeatherData] = useState(null);
+    const [error, setError] = useState(null);
+
+    async function getWeather() {
+        if (zipCode === '') {
+            alert("Please enter a ZIP code.");
+            return;
+        }
+
+        const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY
+        const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&units=${units}&appid=${apiKey}`;
+        try {
+            const res = await fetch(url)
+            const data = await res.json()
+            setWeatherData(data);
+        } catch (err) {
+            setError(err)
+        }
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        getWeather();
+        console.log(weatherData)
+    };
   return (
     <div className="container">
-      <h1 id="temp">{/* Temp */}</h1>
-      <p id="humidity">{/* Humidity */}</p>
-      <p id="desc">{/* Description */}</p>
-      <form id="form">
-        <label htmlFor="zip">Enter Zip Code:</label>
+          <form id="form" onSubmit={handleSubmit}>
+        <label>Enter Zip Code:</label>
         <input
           id="zip"
           type="number"
@@ -27,8 +49,40 @@ function WeatherForm() {
           <option value="imperial">Imperial (°F, mph)</option>
         </select>
         <br />
-        <button type="submit">Search</button>
+              <div>
+                  <input
+                      type="radio"
+                      id="imperial"
+                      name="unit"
+                      value="imperial"
+                      checked={units === 'imperial'}
+                      onChange={(e) => setUnits(e.target.value)}
+                  />
+                  <label>Fahrenheit</label>
+              </div>
+
+              <div>
+                  <input
+                      type="radio"
+                      id="metric"
+                      name="unit"
+                      value="metric"
+                      checked={units === 'metric'}
+                      onChange={(e) => setUnits(e.target.value)}
+                  />
+                  <label>Celsius</label>
+              </div>
+              <button type="submit">Search</button>
+
       </form>
+          {weatherData && (
+              <div>
+                  <h2>Weather Data</h2>
+                  <p>{JSON.stringify(weatherData)}</p>
+              </div>
+          )}
+
+          {error && <p>Error: {error}</p>}
     </div>
   );
 }
