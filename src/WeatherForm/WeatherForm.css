@@ -1,39 +1,39 @@
 h1,
 p {
-    margin: 0 0 1rem 0;
-    color: #ff6f61;
+  margin: 0 0 1rem 0;
+  color: #019ed2;
 }
 
 .container {
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #ff6f61;
-    border-radius: 1rem;
-    padding: 1rem;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgb(255, 239, 97);
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 #form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-#form>input,
+#form > input,
 select {
-    flex: 1;
-    padding: 1em;
-    font-size: 1em;
-    margin: 0;
-    border-radius: 0.5rem;
-    border: 1px solid #ff6f61;
+  flex: 1;
+  padding: 1em;
+  font-size: 1em;
+  margin: 0;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(255, 239, 97);
 }
 
-#form>button {
-    padding: 0 1em;
-    background-color: #ff6f61;
-    color: #fff;
-    font-size: 1em;
-    border: 1px solid #ff6f61;
-    margin: 0;
-    border-radius: 0.5rem;
+#form > button {
+  padding: 0 1em;
+  background-color: rgb(255, 239, 97);
+  color: #019ed2;
+  font-size: 1em;
+  border: 1px solid rgb(255, 239, 97);
+  margin: 0;
+  border-radius: 0.5rem;
 }

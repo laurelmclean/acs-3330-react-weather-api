@@ -34,7 +34,7 @@ function WeatherForm() {
   };
   return (
     <div className="container">
-          <h1>WeatherPulse</h1>
+      <h1>WeatherPulse</h1>
       <form id="form" onSubmit={handleSubmit}>
         <label>Enter Zip Code:</label>
         <input
