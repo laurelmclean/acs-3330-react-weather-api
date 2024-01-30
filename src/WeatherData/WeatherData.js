@@ -1,3 +1,5 @@
+import WeatherIcon from "../WeatherIcon/WeatherIcon";
+
 function WeatherData({data, units}) {
 
     function processWeatherData(data) {
@@ -27,7 +29,7 @@ function WeatherData({data, units}) {
             <p>Pressure: {processedData.pressure} hPa</p>
             <p>Humidity: {processedData.humidity}%</p>
             <p>Wind Speed: {processedData.speed}{units === "imperial" ? ' miles/hour' : ' meter/sec'}</p>
-            <img src={`http://openweathermap.org/img/w/${processedData.icon}.png`} alt="Weather Icon" width="100"/>
+            <WeatherIcon icon={processedData.icon} />
         </>
     );
 }

@@ -1,6 +1,7 @@
 import "./WeatherForm.css";
 import WeatherData from "../WeatherData/WeatherData";
 import Loading from "../Loading/Loading";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { useState } from "react";
 
 function WeatherForm() {
@@ -33,7 +34,7 @@ function WeatherForm() {
   };
   return (
     <div className="container">
-        <h1>Laurel's Weather App</h1>
+          <h1>WeatherPulse</h1>
       <form id="form" onSubmit={handleSubmit}>
         <label>Enter Zip Code:</label>
         <input
@@ -41,7 +42,7 @@ function WeatherForm() {
           type="number"
           placeholder="Zip code"
           title="Please Enter a valid Zip Code"
-          pattern="^\d{5}(?:[-\s]\d{4})?$"
+          pattern="\d{5}"
           value={zipCode}
           onChange={(e) => setZipCode(e.target.value)}
         />
@@ -82,7 +83,7 @@ function WeatherForm() {
         <button type="submit">Search</button>
       </form>
       {/* Conditional Rendering - error and weather data */}
-      {error && <p>Error: {error}</p>}
+      {error && <ErrorMessage error={error} />}
       {weatherData ? (
         <WeatherData data={weatherData} units={units} />
       ) : (
